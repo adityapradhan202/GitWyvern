@@ -1,9 +1,9 @@
 [theme]
-primaryColor = "#8a12fa"
+primaryColor = "#5e12ab"
 textColor = "white"
 backgroundColor = "#151515"
 buttonRadius = "0.5rem"
-secondaryBackgroundColor = "#2a2a2c"
+secondaryBackgroundColor = "#23233a"
 
 [theme.sidebar]
 backgroundColor = "#1e1d20"
