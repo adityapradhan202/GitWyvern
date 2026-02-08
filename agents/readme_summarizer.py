@@ -4,13 +4,11 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from typing import TypedDict
 from .agent_utils import AgentUtils
+from .models import model
 
 class AgentState(TypedDict):
     readme_exists:bool
     readme_summary:str
-
-# using a general purpose llm here - because the task is summarization
-model = ChatOllama(model='qwen2.5:3b', temperature=0.4)
 
 def check_readme(state:AgentState) -> AgentState:
     """Checks if readme file exists"""

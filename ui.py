@@ -13,10 +13,10 @@ with c2:
     st.image(image='static/wyvern_transparent_logo.png')
 
 with st.sidebar:
-    st.markdown("`AI Tool for repo analysis`")
-    st.markdown('Made by -> [Aditya Pradhan](https://github.com/adityapradhan202)')
-    st.markdown("`Settings`")
-    btn = st.button(label="Get app history")
+
+    st.markdown('⚡ Made by -> [Aditya Pradhan](https://github.com/adityapradhan202)', text_alignment="center")
+    st.markdown("#### :red[Options] ⚙️", text_alignment="center")
+    btn = st.button(label="Get app history", use_container_width=True)
 
 with st.form("form"):
     git_url = st.text_input(label="Enter githup url (HTTPS type only):", value=None, placeholder="For example: https://github.com/adityapradhan202/Rag-Badger.git")

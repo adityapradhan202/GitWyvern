@@ -22,6 +22,32 @@ class AgentUtils:
             return True
         return False
     
+    # function to get the list of code files
+    @staticmethod
+    def code_files(path:str='./workdir'):
+        """Retruns a list of code files"""
+        code_files = []
+        def collect_code_files(path:str=path) -> List[str]:
+            print("-> Collectiong code files")
+            dirs = os.listdir(path)
+            for dir in dirs:
+                if dir == ".git":
+                    continue
+
+                complete_path = os.path.join(path, dir)
+                if os.path.isfile(complete_path):
+                    if dir.endswith(".py") or dir.endswith(".cpp") or dir.endswith(".java") or dir.endswith(".js"):
+                        code_files.append(complete_path)
+                    else:
+                        continue
+                else:
+                    collect_code_files(complete_path)
+        # call the inner function
+        collect_code_files()
+        return code_files
+    
+    # function for extracting function names from the code files
+    
     # function to create directory tree / project structure
     @staticmethod
     def project_structure(start_path):

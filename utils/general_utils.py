@@ -18,7 +18,7 @@ class GeneralUtils:
     #     """Initializes workdir"""
     #     if os.path.exists('./workdir'):
     #         print("reseting workdir")
-    #         subprocess.run(["bash", "reset_workdir.sh"], shell=True)
+    #         subprocess.run(["bash", "reset_workdir.sh"])
     #     else:
     #         os.mkdir('./workdir')
 
