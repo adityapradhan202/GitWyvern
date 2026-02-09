@@ -6,6 +6,7 @@ import time
 # importing agents
 from agents import summarizer
 from agents import AgentUtils
+from agents import analyzer
 
 st.header("GitWyvern", text_alignment="center")
 c1, c2, c3 = st.columns(3)
@@ -43,24 +44,37 @@ if form_btn:
                     if summarizer_state["readme_exists"] and len(summarizer_state["readme_summary"]) > 400:
                         readme_summarized = summarizer_state["readme_summary"]
                         st.header("Project-Summary", text_alignment="center")
-                        st.write(readme_summarized)
+                        with st.container(border=True):
+                            st.write(readme_summarized)
                     else:
                         st.caption("-> Oops either this repository doesn't contain a README file or the readme file is very small 😅 Proceeding further!")
+                
+                # Get project structure
+                p_structure = AgentUtils.project_structure(start_path='workdir')
+                st.header("Complete Project-structure", text_alignment="center")
+                c4, c5, c6 = st.columns(3)
+                with c5:
+                    st.text(p_structure)
+
+
+                # Analyzer output here
+                st.header("Code file analysis", text_alignment="center")
+                file_paths = AgentUtils.code_files()
+                output = analyzer.invoke({"files_paths":file_paths})
+                func_analysis = ""
+                for ind, key in enumerate(output["output"], start=1):
+                    func_analysis += (f"➡️ " + key + "\n")
+                    func_analysis += (output["output"][key] + "\n\n")
+                with st.container(border=True):
+                    st.text(func_analysis)
+
+                
+
             else:
                 st.warning("Some issue occured! Make sure the url is correct or check your internet connection!")
-
-            # Get project structure
-            p_structure = AgentUtils.project_structure(start_path='workdir')
-            st.header("Complete Project-structure", text_alignment="center")
-            c4, c5, c6 = st.columns(3)
-            with c5:
-                st.text(p_structure)
-   
 
     # If user doesn't enters GIT url    
     else:
         st.warning("Enter Github url")
 
-
-# Code for sidebar here
 

@@ -38,7 +38,7 @@ class AgentUtils:
 
                 complete_path = os.path.join(path, dir)
                 if os.path.isfile(complete_path):
-                    if dir.endswith(".py") or dir.endswith(".cpp") or dir.endswith(".java") or dir.endswith(".js"):
+                    if dir.endswith(".py"):
                         code_files.append(complete_path)
                     else:
                         continue
@@ -54,55 +54,10 @@ class AgentUtils:
         """Extract and returns a list of strings containing a function names from the supported code files"""
 
         print("-> Fetching functions")
-        if ".js" in path:
-
-            print("-> Javascript code detected")
-            with open(path, "r", encoding="utf-8") as f:
-                code = f.read()
-            funcs = []
-            pattern1 = re.compile(r'function\s+(\w+)\s*\(')
-            funcs += pattern1.findall(code)
-            pattern2 = re.compile(r'(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?(?:function|\([^\)]*\)\s*=>)')
-            funcs += pattern2.findall(code)
-            return funcs
-        
-        elif ".py" in path:
-            # using built in ast here
-
-            print("-> Python code detected")
-            with open(path, "r", encoding="utf-8") as f:
-                tree = ast.parse(f.read())
-            funcs = [node.name for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)]
-            return funcs
-
-        elif ".cpp" in path:
-
-            print("-> C++ code detected")
-            with open(path, "r", encoding="utf-8") as f:
-                code = f.read()
-            pattern_cpp = re.compile(
-                r'(?:[\w:<>\*&]+\s+)+'
-                r'(\w+)\s*\([^)]*\)\s*(?:const)?\s*\{'
-            )
-            funcs = pattern_cpp.findall(code)
-
-        elif ".java" in path:
-
-            print("-> Java code detected")
-            with open(path, "r", encoding="utf-8") as f:
-                code = f.read()
-            pattern_java = re.compile(
-                r'(?:public|private|protected)?\s*'
-                r'(?:static\s+)?'
-                r'[\w\<\>\[\]]+\s+'
-                r'(\w+)\s*\([^)]*\)\s*\{'
-            )
-            funcs = pattern_java.findall(code)
-            return funcs
-        
-        else:
-            
-            return []
+        with open(path, "r", encoding="utf-8") as f:
+            tree = ast.parse(f.read())
+        funcs = [node.name for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)]
+        return funcs    
     
     # function to create directory tree / project structure
     @staticmethod

@@ -14,9 +14,9 @@ def process_files(state:AgentState) -> AgentState:
 
     analyze_pt = ChatPromptTemplate.from_messages(
         messages=[
-            ("system", "You are a code analyzer! You use function name to conclude what the code file might be about!"),
-            ("system", "Here are some function names: {funcs_str}"),
-            ("system", "Give response in as plain text in 30 words.")
+            ("system", "You are a code analyzer! You use function name and file name to conclude what the code file might be about!"),
+            ("system", "File name: {file_name} Function names: {funcs_str}"),
+            ("system", "Give response in as plain text in 40 words.")
         ]
     )
     chain = analyze_pt | code_model | StrOutputParser()
@@ -25,12 +25,14 @@ def process_files(state:AgentState) -> AgentState:
     files = state["files_paths"]
     for ind, file in enumerate(files, start=1):
         print(f"-> Analyzing file | file number: {ind}")
+        fpath = file.replace("./workdir", "")
+        # print(fpath)
         funcs = AgentUtils.extract_func_names(file)
         if len(funcs) == 0:
             continue
         else:
             funcs_str = ", ".join(funcs)
-            analysis = chain.invoke({"funcs_str":funcs_str})
+            analysis = chain.invoke({"file_name":fpath,"funcs_str":funcs_str})
             output[file] = analysis
 
 

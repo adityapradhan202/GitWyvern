@@ -23,7 +23,7 @@ def summarize_parts(state:AgentState) -> AgentState:
     print("-> Initializing REDME.md summarization")
     summarize_pt = ChatPromptTemplate.from_messages(
         messages=[
-            ("system", "Summarize the Text within 50 words in easy and simple language. Text: {chunk}"),
+            ("system", "Summarize the Text in atmost 20 words easy and simple language! Text: {chunk}"),
             ("system", "Do not give any pre declarations like - here's the summary"),
             ("system", "Do not ask any follow up question or give any post declarations"),
             ("system", "Your only job is to summarize the text. Use bullet points and backticks to highlight something")
