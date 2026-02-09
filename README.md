@@ -1,4 +1,4 @@
-<h2 align="center">GitWyvern</h1>
+<h1 align="center">GitWyvern</h1>
 <p align="center">
 <img src="./static/wyvern_transparent_logo.png" width="250">
 </p>
