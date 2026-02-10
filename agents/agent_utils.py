@@ -79,7 +79,7 @@ class AgentUtils:
 
             output.append(f"{indent}{folder_name}/")
             for file in files:
-                output.append(f"{indent}    |_ {file}")
+                output.append(f"{indent}       |_ {file}")
         return "\n".join(output)
 
 if __name__ == "__main__":
