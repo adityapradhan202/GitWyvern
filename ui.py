@@ -60,7 +60,7 @@ elif form_btn == True and git_url is not None:
 
 
 if st.session_state.readme_summary:
-    st.header("Project Summary", text_alignment="center")
+    st.header("Summary", text_alignment="center")
     summarizer_res = st.session_state.readme_summary
     if summarizer_res["readme_exists"] and len(summarizer_res["readme_summary"]) > 400:
         st.caption("Here's a summary of the readme file!")
