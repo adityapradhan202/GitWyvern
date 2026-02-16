@@ -7,12 +7,20 @@ import time
 from agents import summarizer
 from agents import AgentUtils
 from agents import analyzer
+from agents import sast_agent
 
 # Session state variables
 if "readme_summary" not in st.session_state:
     st.session_state.readme_summary = None
 if "file_analysis" not in st.session_state:
     st.session_state.file_analysis = None
+# Session state variables for the sast agent
+if "vuls_sols" not in st.session_state:
+    st.session_state.vuls_sols = None
+if "overally_safe" not in st.session_state:
+    st.session_state.overally_safe = None
+if "vul_cnt" not in st.session_state:
+    st.session_state.vul_cnt = None
 
 st.header("GitWyvern", text_alignment="center")
 c1, c2, c3 = st.columns(3)
@@ -45,14 +53,21 @@ elif form_btn == True and git_url is not None:
             summarizer_output = summarizer.invoke({})
             st.session_state.readme_summary = summarizer_output
         # analyzer agent
+        py_files = AgentUtils.code_files()
         with st.spinner("Wyvern is analyzing the files...", show_time=True):
-            py_files = AgentUtils.code_files()
             analyzer_output = analyzer.invoke({"files_paths":py_files})
             file_analysis = ""
             for ind, key in enumerate(analyzer_output["output"], start=1):
-                file_analysis += (f"📁 " + key + "\n")
-                file_analysis += (analyzer_output["output"][key] + "\n\n")
+                file_analysis += (f"📂 {key}\n")
+                file_analysis += (f"📋 {analyzer_output["output"][key]}\n\n")
             st.session_state.file_analysis = file_analysis
+        # sast_agent
+        with st.spinner("Wyvern is searching for vulnerabilities"):
+            sast_response = sast_agent.invoke({"file_paths":py_files})
+            st.session_state.overally_safe = sast_response['overally_safe']
+            if not st.session_state.overally_safe:
+                st.session_state.vuls_sols = sast_response['vuls_sols']
+                st.session_state.vul_cnt = sast_response['vul_cnt']
 
     # if repo wasnt cloned
     else:
@@ -76,60 +91,41 @@ if st.session_state.file_analysis:
     with st.container(border=True):
         st.text(analyzer_res)
 
-test_btn = st.button("test-button")
-if test_btn:
-    st.write("Pressed")
-
-# # form
-# if form_btn:
-#     # if url is not none
-#     if git_url is not None:
-#         with st.spinner("Wyvern is getting the repo for you..."):
-#             time.sleep(2.5)
-#             GeneralUtils.initialize_workdir()
-#             git_url = git_url.strip()
+# sast agent output display
+if st.session_state.overally_safe:
+    st.header("Security Scan", text_alignment="center")
+    with st.container(border=True):
+        vul_col1, vul_col2 = st.columns(2)
+        with vul_col1:
+            with st.container(border=True, width="stretch"):
+                st.markdown('### :red[By Severity]', text_alignment="center")
+                st.markdown(f"""**Undefined:** 0, **Low:** 0, **Mid:** 0, **High:** 0""", text_alignment="center")
             
-#             res = GitUtils.clone_repo(git_url=git_url)
-#             # Once repo is cloned
-#             if res:
-#                 # Summarize readme
-#                 with st.spinner(text="Wyvern is summarizing the readme..."):
-#                     time.sleep(2)
-#                     summarizer_state = summarizer.invoke({})
-#                     # if readme exists
-#                     if summarizer_state["readme_exists"] and len(summarizer_state["readme_summary"]) > 400:
-#                         readme_summarized = summarizer_state["readme_summary"]
-#                         st.header("Project-Summary", text_alignment="center")
-#                         with st.container(border=True):
-#                             st.write(readme_summarized)
-#                     else:
-#                         st.caption("-> Oops either this repository doesn't contain a README file or the readme file is very small 😅 Proceeding further!")
-                
-#                 # Get project structure
-#                 p_structure = AgentUtils.project_structure(start_path='workdir')
-#                 st.header("Complete Project-structure", text_alignment="center")
-#                 with st.container(border=True):
-#                     st.text(p_structure)
+        with vul_col2:
+            with st.container(border=True, width="stretch"):
+                st.markdown('### :red[By Confidence]', text_alignment="center")
+                st.markdown(f"""**Undefined:** 0, **Low:** 0, **Mid:** 0, **High:** 0""", text_alignment="center")
+        st.markdown(":green[There are no vulnerabilities in the python scripts. You can use it safely!] ✅", text_alignment="center")
+elif st.session_state.overally_safe == False:
+    st.header("Security Scan", text_alignment="center")
+    st.caption("Wyvern found some vulnerabilities...")
+    # Bigger container
+    with st.container(border=True, width="stretch"):
+        vul_col1, vul_col2 = st.columns(2)
+        with vul_col1:
+            with st.container(border=True, width="stretch"):
+                st.markdown('### :red[By Severity]', text_alignment="center")
+                st.markdown(f"""**Undefined:** {st.session_state.vul_cnt["severity"]["undefined"]}, **Low:** {st.session_state.vul_cnt["severity"]["low"]}, **Mid:** {st.session_state.vul_cnt["severity"]["mid"]}, **High:** {st.session_state.vul_cnt["severity"]["high"]}""", text_alignment="center")
+            
+        with vul_col2:
+            with st.container(border=True, width="stretch"):
+                st.markdown('### :red[By Confidence]', text_alignment="center")
+                st.markdown(f"""**Undefined:** {st.session_state.vul_cnt["confidence"]["undefined"]}, **Low:** {st.session_state.vul_cnt["confidence"]["low"]}, **Mid:** {st.session_state.vul_cnt["confidence"]["mid"]}, **High:** {st.session_state.vul_cnt["confidence"]["high"]}""", text_alignment="center")
 
-
-#                 # Analyzer output here
-#                 st.header("Code file analysis", text_alignment="center")
-#                 file_paths = AgentUtils.code_files()
-#                 output = analyzer.invoke({"files_paths":file_paths})
-#                 func_analysis = ""
-#                 for ind, key in enumerate(output["output"], start=1):
-#                     func_analysis += (f"➡️ " + key + "\n")
-#                     func_analysis += (output["output"][key] + "\n\n")
-#                 with st.container(border=True):
-#                     st.text(func_analysis)
-
-                
-
-#             else:
-#                 st.warning("Some issue occured! Make sure the url is correct or check your internet connection!")
-
-#     # If user doesn't enters GIT url    
-#     else:
-#         st.warning("Enter Github url")
-
-
+        vul_sol_display = ""
+        for file in st.session_state.vuls_sols:
+            vul_sol_display += (f"❌ {file}\n")
+            vul_sol_display += (f"📋 {st.session_state.vuls_sols[file][0]}\n")
+            vul_sol_display += (f"✅ {st.session_state.vuls_sols[file][1]}\n\n")
+        st.markdown("#### > Vulnerabilities + Recommendations <", text_alignment="center")
+        st.text(vul_sol_display)
