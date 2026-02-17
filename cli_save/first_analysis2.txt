@@ -1,0 +1,24 @@
+📁 ./workdir\agents\agent_utils.py
+📋 This code file seems to handle various utility functions for agents, including creating chunks, checking for README existence, listing code files, extracting function names, analyzing project structure, and collecting all code files.
+
+📁 ./workdir\agents\funcname_analyzer.py
+📋 This code likely analyzes or processes files within the agents directory.
+
+📁 ./workdir\agents\readme_summarizer.py
+📋 Readme summarizer script checks README files for summary sections and extracts key points. It's a Python module to organize READMEs.
+
+📁 ./workdir\agents\sast_llm.py
+📋 Code file appears to analyze security vulnerabilities using a large language model (LLM). It includes functions for scanning files, determining if analysis is needed, describing detected vulnerabilities, and suggesting solutions.
+
+📁 ./workdir\agents\security_utils.py
+📋 Security utility functions for application analysis.
+
+📁 ./workdir\tests\security_utils_test.py
+📋 This file likely contains tests for security-related utilities, possibly focusing on cryptographic operations or validation mechanisms.
+
+📁 ./workdir\utils\general_utils.py
+📋 The code file general_utils is likely designed to handle general utility functions, including initializing a working directory.
+
+📁 ./workdir\utils\git_utils.py
+📋 This likely contains utility functions for Git operations, specifically focusing on cloning repositories.
+

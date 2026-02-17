@@ -1,0 +1,2 @@
+All the CLI outputs saved here!
+There are some files in this folder containing results of the security tests and analysis.
