@@ -1,0 +1,31 @@
+📁 ./workdir\agents\agent_utils.py
+📋 This code file appears to be related to managing agent utilities, including functions for chunking data, checking README existence, listing all code files, extracting function names, providing a project structure overview, and collecting all available code files.
+
+📁 ./workdir\agents\funcname_analyzer.py
+📋 This file seems to be a processing script for files, likely related to agent functionalities or operations within an agents module.
+
+📁 ./workdir\agents\readme_summarizer.py
+📋 This Python script appears to be an agent designed for reading and summarizing the content of README files. It includes functions to check the readability of a README and extract key parts for summarization.
+
+📁 ./workdir\agents\sast_llm.py
+📋 This file likely contains functions for scanning files, checking if analysis is needed, describing vulnerabilities, and suggesting solutions related to software security assessment using Large Language Models (LLMs).
+
+📁 ./workdir\agents\security_utils.py
+📋 This Python script appears to contain utilities for analyzing security risks and identifying vulnerabilities within software agents. It includes functions such as scanning for potential "bandits" (potential security flaws), counting occurrences of vulnerabilities, mapping vulnerabilities by severity, performing a safety check on the codebase, and listing all identified vulnerabilities.
+
+📁 ./workdir\gitwyvern.py
+📋 This Python file likely contains functions related to command-line logging, vulnerability analysis, and security checks for Git repositories or web applications using Wyvern technology.
+
+📁 ./workdir\tests\security_utils_test.py
+📋 This file likely tests security-related utilities or functions within a larger project, focusing on ensuring the security of various aspects including authentication, encryption, and validation mechanisms.
+
+📁 ./workdir\utils\general_utils.py
+📋 This file likely contains utility functions related to setting up work directories for various applications or projects.
+
+📁 ./workdir\utils\git_utils.py
+📋 This Python script is designed to handle Git repository cloning operations. It includes a function named `clone_repo`.
+
+📁 ./workdir\wyvern_ascii.py
+📋 This Python script is likely to contain ASCII art for a Wyvern console interface, possibly used in a game or application development environment. It's intended to visually represent the Wyvern character or system in the terminal or command line setting.
+
+Git URL: https://github.com/adityapradhan202/GitWyvern.git

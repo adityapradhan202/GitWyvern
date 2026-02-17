@@ -36,13 +36,14 @@ def analyze(giturl:str):
         for file in output:
             report += f"📁 {file}\n"
             report += f"📋 {output[file]}\n\n"
+        report += f"Git URL: {giturl}"
         with open(path, "w", encoding="utf-8") as file:
             file.write(report)
 
         wyvern_console_ascii()
 
         print("\n\n---> File analysis report\n\n"+report)
-        print(f"\n\nSuccesfully logged the file analysis report at {path}")
+        print(f"Succesfully logged the file analysis report at {path}")
     # If the repo is not clonned succesfully
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
@@ -92,7 +93,7 @@ By confidence:
                 report += f"❌ {file}\n"
                 report += f"📋 {vuls_sols[file][0]}\n"
                 report += f"✅ {vuls_sols[file][1]}\n\n"
-
+            report += f"Git URL: {giturl}"
             with open(path, "w", encoding="utf-8") as file:
                 file.write(report)
 

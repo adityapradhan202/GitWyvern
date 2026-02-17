@@ -1,0 +1,19 @@
+📁 ./workdir\frontend\api_req.py
+📋 Frontend API request handling script.
+
+📁 ./workdir\notebooks\custom_eval\evaluate.py
+📋 This looks like a Python script for evaluating contexts, likely within a custom evaluation context system.
+
+📁 ./workdir\notebooks\helpers\utils.py
+📋 This looks like a utility library for handling JSON files and logging experiments, likely used in a machine learning context.
+
+📁 ./workdir\rag_pipeline\main.py
+📋 This code analyzes if the API connection is successful during testing.
+
+📁 ./workdir\rag_pipeline\pipeline\data_ingestion\ingest.py
+📋 This file appears to handle data ingestion for a pipeline system, likely using techniques like text cleaning and vector database creation.
+
+📁 ./workdir\rag_pipeline\pipeline\rag_workflow.py
+📋 The Python script appears to handle RAG (Retrieval-Augmented Generation) workflows with logic for routing and contextual routing.
+
+Git URL: https://github.com/adityapradhan202/BNS-LexAI.git
