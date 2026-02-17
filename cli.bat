@@ -1,6 +1,4 @@
 @echo off
-echo Starting Wyvern...
-
 echo.
 echo Spinning the Ollama's server.
 echo Disclaimer: Make sure Ollama and Nvidia's CUDA toolkit has been properly setup. Otherwise it wont work.
@@ -12,6 +10,8 @@ echo.
 echo.
 echo You can see the list of Ollama models you have on your device
 echo The app will crash if you dont have Ollama's qwen2.5:3b and qwen2.5-coder:3b
+
+pause
 
 SET VENV_DIR=venv
 IF EXIST %VENV_DIR% (
@@ -25,7 +25,4 @@ IF EXIST %VENV_DIR% (
     echo Successfully installed the required dependencies
 )
 
-echo.
-echo Running ui.py
-streamlit run ui.py
-pause
+start cmd /k python wyvern_ascii.py

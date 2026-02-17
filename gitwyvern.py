@@ -7,13 +7,15 @@ from agents import AgentUtils
 from agents import sast_agent, analyzer
 from utils import GeneralUtils
 
+from wyvern_ascii import wyvern_console_ascii
+
 app = typer.Typer()
 
 @app.command()
 def analyze(giturl:str, fname:str):
     """"Docstring here"""
 
-    path = os.path.join("./cli_save", fname + ".txt")
+    path = os.path.join("./cli_logs", fname + ".txt")
     if os.path.exists(path):
         print("This file already exists! Choose another name!")
         return
@@ -36,7 +38,11 @@ def analyze(giturl:str, fname:str):
             report += f"📋 {output[file]}\n\n"
         with open(path, "w", encoding="utf-8") as file:
             file.write(report)
-        print(f"Succesfully saved the file analysis report at {path}")
+
+        wyvern_console_ascii()
+
+        print("\n\n---> File analysis report\n\n"+report)
+        print(f"\n\nSuccesfully saved the file analysis report at {path}")
     # If the repo is not clonned succesfully
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
@@ -50,7 +56,7 @@ def security(giturl:str, fname:str) -> None:
         fname(str): Name of the file
     """
 
-    path = os.path.join("./cli_save", fname + ".txt")
+    path = os.path.join("./cli_logs", fname + ".txt")
     if os.path.exists(path):
         print("This file already exists! Choose another name!")
         return
@@ -66,7 +72,10 @@ def security(giturl:str, fname:str) -> None:
             print(f"Exception occured: {e}")
             return
         if response["overally_safe"] == True:
-            print("Wyvern didn't catch any vulnerabilities. The python scripts are safe to use.")
+            print("\n\nWyvern didn't find any vulnerabilities. The python scripts are safe to use.")
+            with open(path, "w", encoding="utf-8") as file:
+                file.write("Wyvern didn't find any vulnerabilities. The python scripts are safe to use.")
+            print(f"Saving this information at {path}")
         else:
             report = ""
             vul_cnt = response["vul_cnt"]
@@ -94,6 +103,11 @@ By confidence:
 
             with open(path, "w", encoding="utf-8") as file:
                 file.write(report)
+
+            wyvern_console_ascii()
+
+            print("\n\nWyvern found some vulnerabilities")
+            print("\n---> Security scan report\n\n"+report)
             print(f"Succesfully saved the security report at {path}")
     # If repo is not clonned
     else:
