@@ -1,0 +1,25 @@
+
+By Severity:
+    1. Undefined: 0
+    2. Low: 5
+    3. Mid: 0
+    4. High 1
+
+By confidence:
+    1. Undefined: 0
+    2. Low: 0
+    3. Mid: 0
+    4. High 6
+
+
+
+------- Vulnerabilities + Recommendations --------
+
+❌ ./workdir\agents\security_utils.py
+📋 Subprocess module misuse can lead to running unauthorized commands, posing security risks. Starting with partial executable path for subprocess.run is a low severity issue potentially leading to security risks, requiring use of full path to mitigate CWE-78. Bypassing shell restrictions in Python subprocess by setting shell=False 
+✅ Use full paths for subprocess.run and avoid using shell=False unless necessary. This helps prevent unauthorized command execution, mitigating CWE-78 security risks.
+
+❌ ./workdir\utils\general_utils.py
+📋 Using subprocess module poses high risks of command injection attacks without proper input validation. Process starting with partial path identified as CWE-78 (low severity, high confidence) in .\./workdir/utils/general_utils.py line 11 column 1210. Subprocess with shell=True and elevated permissions pose a security risk. 
+✅ Use subprocess.run() without shell=True, and validate all inputs passed to it. Use environment variables instead of hardcoding paths, as they can be controlled by attackers. Avoid using elevated permissions unless absolutely necessary.
+

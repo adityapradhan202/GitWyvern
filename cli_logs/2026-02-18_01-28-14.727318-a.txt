@@ -1,0 +1,18 @@
+📁 ./workdir\frontend\api_req.py
+📋 The Python script at frontend/api_req.py likely handles making API requests for the frontend application, with a function named 'send_request' responsible for initiating and managing these requests.
+
+📁 ./workdir\notebooks\custom_eval\evaluate.py
+📋 This Python script likely evaluates two contexts, possibly from a custom dataset or API within the `custom_eval` directory. The function names suggest it compares these contexts for similarity.
+
+📁 ./workdir\notebooks\helpers\utils.py
+📋 The utils.py file appears to contain functions related to managing JSON files and logging experiments, including initializing a new JSON file, logging experiment details, deleting existing logs, and logging custom experiment information.
+
+📁 ./workdir\rag_pipeline\main.py
+📋 Looks like the main Python script for a pipeline that includes an API connection testing function named `test_api_connection`.
+
+📁 ./workdir\rag_pipeline\pipeline\data_ingestion\ingest.py
+📋 This Python file likely contains functions for cleaning text data and creating a vector database for machine learning tasks related to pipeline data ingestion.
+
+📁 ./workdir\rag_pipeline\pipeline\rag_workflow.py
+📋 Code file appears to handle routing and processing logic for a retrieval-Augmentation Generative (RAG) pipeline, with focus on routes and context-based processing.
+

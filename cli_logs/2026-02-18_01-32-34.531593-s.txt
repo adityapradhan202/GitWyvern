@@ -1,0 +1,21 @@
+
+By Severity:
+    1. Undefined: 0
+    2. Low: 0
+    3. Mid: 1
+    4. High 0
+
+By confidence:
+    1. Undefined: 0
+    2. Low: 1
+    3. Mid: 0
+    4. High 0
+
+
+
+------- Vulnerabilities + Recommendations --------
+
+❌ ./workdir\frontend\api_req.py
+📋 Calls to requests can be made without setting a timeout in certain configurations or libraries. 
+✅ Ensure all network calls include timeouts by using `timeout` parameters, especially when dealing with unreliable connections or slow servers. This helps prevent hanging requests and improves application responsiveness.
+

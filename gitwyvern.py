@@ -1,5 +1,4 @@
 # CLI for gitWyvern
-
 import os
 import typer
 from utils import GitUtils
@@ -8,18 +7,19 @@ from agents import sast_agent, analyzer
 from utils import GeneralUtils
 
 from wyvern_ascii import wyvern_console_ascii
+from datetime import datetime
+
+def cli_log_fname() -> str:
+    """Returns string containing current date and time for the filename"""
+    return str(datetime.now()).replace(" ", "_").replace(":", "-")
 
 app = typer.Typer()
 
 @app.command()
-def analyze(giturl:str, fname:str):
-    """"Docstring here"""
+def analyze(giturl:str):
+    fname = cli_log_fname()
+    path = os.path.join("./cli_logs", fname + "-a" + ".txt")
 
-    path = os.path.join("./cli_logs", fname + ".txt")
-    if os.path.exists(path):
-        print("This file already exists! Choose another name!")
-        return
-    
     GeneralUtils.initialize_workdir()
     ack = GitUtils.clone_repo(giturl)
 
@@ -42,24 +42,16 @@ def analyze(giturl:str, fname:str):
         wyvern_console_ascii()
 
         print("\n\n---> File analysis report\n\n"+report)
-        print(f"\n\nSuccesfully saved the file analysis report at {path}")
+        print(f"\n\nSuccesfully logged the file analysis report at {path}")
     # If the repo is not clonned succesfully
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
 
 
 @app.command()
-def security(giturl:str, fname:str) -> None:
-    """Uses the sast_llm agent and saves the output to a text file.
-    Args:
-        giturl(str): URL of the github repository
-        fname(str): Name of the file
-    """
-
-    path = os.path.join("./cli_logs", fname + ".txt")
-    if os.path.exists(path):
-        print("This file already exists! Choose another name!")
-        return
+def security(giturl:str) -> None:
+    fname = cli_log_fname()
+    path = os.path.join("./cli_logs", fname + "-s" + ".txt")
 
     GeneralUtils.initialize_workdir()
     ack = GitUtils.clone_repo(giturl)

@@ -1,6 +1,6 @@
 wyvern_ascii = r"""
- <>gitwyvern() 
-(/\___   /|\\          ()==gitwyvern=<>_
+<>gitwyvern() 
+(/\___   /|\\          ()==gitwyvern==<>_
       \_/ | \\        //|\   ______/\\)
         \_|  \\      // | \_/
           \|\/|\_   //  /\/
@@ -9,7 +9,7 @@ wyvern_ascii = r"""
          @@/  |=\  \  |
               \_=\_ \ |
                 \==\ \|\_ gitwyvern
-             __(\===\(  )\\
+             __(\===\(  )\
             (((~) __(_/   |
                  (((~) \  /
                  ______/ /
@@ -24,8 +24,8 @@ wyvern_ascii = r"""
 Made by - Aditya Pradhan
 Use python gitwyvern.py --help
 Commands:
-Analyze -> python gitwyvern.py analyze [git_url] filename
-Security -> python gitwyvern.py security [git_url] filename
+Analyze -> python gitwyvern.py analyze [git_url]
+Security -> python gitwyvern.py security [git_url]
 """
 def wyvern_console_ascii():
     print(wyvern_ascii)
