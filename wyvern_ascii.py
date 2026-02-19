@@ -22,10 +22,8 @@ wyvern_ascii = r"""
  |___/                |___/                                            
 
 Made by - Aditya Pradhan
-Use python gitwyvern.py --help
-Commands:
-Analyze -> python gitwyvern.py analyze [git_url]
-Security -> python gitwyvern.py security [git_url]
+To see the all commands use: python gitwyvern.py --help
+to see the args of commands use: python gitwyvern.py [command] --help
 """
 def wyvern_console_ascii():
     print(wyvern_ascii)

@@ -5,9 +5,12 @@ from utils import GitUtils
 from agents import AgentUtils
 from agents import sast_agent, analyzer
 from utils import GeneralUtils
+from rag_pipeline import qa_rag
+from rag_pipeline import RagBuilder
 
 from wyvern_ascii import wyvern_console_ascii
 from datetime import datetime
+
 
 def cli_log_fname() -> str:
     """Returns string containing current date and time for the filename"""
@@ -33,6 +36,34 @@ def clear_cli_logs():
         print("CLI logs were not deleted. Processed cancelled!")
     else:
         print("Invalid input. Enter Y or N!")
+
+# Chat-wyvern CLI
+@app.command()
+def chat_wyvern(giturl:str):
+    """Creates a RAG and opens a chat oop in the CLI"""
+    
+    GeneralUtils.initialize_workdir()
+    ack = GitUtils.clone_repo(giturl)
+    if ack:
+        builder = RagBuilder()
+        builder.create_vector_store()
+
+        print()
+        wyvern_console_ascii()
+        print("---------> Chat-wyvern <--------- (write /bye to exit the chat)")
+        while True:
+            prompt = input("prompt> ")
+            if prompt.lower() == "/bye":
+                print("Exiting Chat-wyvern...")
+                break
+            print("Generating... Please wait!")
+            res = qa_rag.invoke({'query':prompt})
+            print("\n-------> Wyvern's Response <--------- (write /bye to exit the chat) \n")
+            print(res['response'])
+            print("\n\n")
+    else:
+        print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
+
 
 @app.command()
 def analyze(giturl:str):
