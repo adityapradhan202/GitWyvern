@@ -23,11 +23,16 @@ It is a beautifully orchestrated application that uses local LLMs to summarize R
 
 > ⚠️ Official v0.0.1 is yet to be released after some tests.
 
+![gui_img](./docs/ss_st_app.png)
+![cli_img](./docs/ss_cli.png)
+
 ### Features:
 * Smart file-purpose inference from names & signatures (accurate most of the time) for quick codebase overview.
 * Hybrid SAST + LLM security scan: detects issues, explains context, suggests fixes.
 * RAG-based chat interface with repo knowledge.
 * Modular CLI commands for maximum flexibility - use only the features you need (scout, security scan, chat, summary) without running the entire analysis.
+
+
 
 ### Requirements:
 1. Git.
