@@ -23,6 +23,11 @@ It is a beautifully orchestrated application that uses local LLMs to summarize R
 
 > ⚠️ Official v0.0.1 is yet to be released after some tests.
 
+### Features:
+* Smart file-purpose inference from names & signatures (accurate most of the time) for quick codebase overview.
+* Hybrid SAST + LLM security scan: detects issues, explains context, suggests fixes.
+* RAG-based chat interface with repo knowledge.
+
 ### Requirements:
 1. Git.
 2. Ollama `(Models - qwen2.5:3b, qwen2.5-coder:3b, nomic-embed-text:v1.5)`.
@@ -48,5 +53,5 @@ It is a beautifully orchestrated application that uses local LLMs to summarize R
 3. Here's the list of commands you can use:
     * `python gitwyvern.py analyze [github_url]` - Analyzes code files. 
     * `python gitwyvern.py security [github_url]` - Performs a hybrid security scan (SAST + LLM)
-    * `python gitwyvern.py chat-wyvern [github_url]` - Creates and starts repo-aware chat system
+    * `python gitwyvern.py chat-wyvern [github_url]` - Creates and starts repo-aware chat system in the CLI itself.
     * `python gitwyvern.py clear-cli-logs [github_url]` - To clear the CLI logs.
