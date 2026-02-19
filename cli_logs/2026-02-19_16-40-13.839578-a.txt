@@ -1,4 +1,0 @@
-📁 ./workdir\app.py
-📋 The file appears to contain functions related to web scraping or data collection for recommendations, likely based on user input descriptions or components loading.
-
-Git URL: https://github.com/adityapradhan202/Grimoire-Guide.git

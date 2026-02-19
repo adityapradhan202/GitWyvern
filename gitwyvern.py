@@ -16,6 +16,25 @@ def cli_log_fname() -> str:
 app = typer.Typer()
 
 @app.command()
+def clear_cli_logs():
+    """Clears the CLI logs directory"""
+
+    dirs = os.listdir('./cli_logs/')
+    confirm = input("This will clear all the CLI logs. Enter Y to proceed, otherwise enter N: ")
+    if confirm.lower() == "y":
+        for dir in dirs:
+            # skipping dummy.txt so that this folder can be commited to git
+            if dir == "dummy.txt":
+                continue
+            comp_path = os.path.join("./cli_logs", dir)
+            os.remove(comp_path)
+        print("Successfully cleared the CLI logs")
+    elif confirm.lower() == "n":
+        print("CLI logs were not deleted. Processed cancelled!")
+    else:
+        print("Invalid input. Enter Y or N!")
+
+@app.command()
 def analyze(giturl:str):
     fname = cli_log_fname()
     path = os.path.join("./cli_logs", fname + "-a" + ".txt")

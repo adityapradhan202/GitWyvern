@@ -1,1 +1,0 @@
-Wyvern didn't find any vulnerabilities. The python scripts are safe to use.
