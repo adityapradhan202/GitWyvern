@@ -34,7 +34,7 @@ It is a beautifully orchestrated application that uses local LLMs to summarize R
 
 #### Setup for Windows Operating System:
 1. First clone this repository.
-2. You must have python installed. Then open file explorer and go to the root level of the project folder and double click on `run.bat`. **Double click this microsoft windows batch file to run GitWyvern GUI application**. If a virtual environment doesn't exist, it creates on and installs all the required dependcies inside the virtual environment. The next time you run this batch file, it will activate the existing venv, and runs the app at ` http://localhost:8501`.
+2. You must have python installed. Then open file explorer and go to the root level of the project folder and double click on `run.bat`. **Double click this microsoft windows batch file to run GitWyvern GUI application**. If a virtual environment doesn't exist, it creates on and installs all the required dependcies inside the virtual environment. The next time you run this batch file, it will activate the existing venv, and runs the app at `http://localhost:8501`. It will open the app in your default browser.
 3. To run the cli, **Double click on** `cli.bat`.
 
 <img src="https://cdn-icons-png.flaticon.com/128/15466/15466088.png" width="40">
