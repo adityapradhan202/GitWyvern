@@ -45,7 +45,7 @@ def use_rag(state:AgentState) -> AgentState:
     print("-> Query is code related. Using RAG.")
     answer_pt = ChatPromptTemplate.from_messages(
         [("system", "You are an experienced python developer. You have all the knowledge about python"),
-        ("system", "You are also a helpful assistant who uses the provided context to find and generate an answer for user's query"),
+        ("system", "You are also a helpful assistant who uses the provided context to an answer for user's query"),
         ("system", "Just give the answer and dont ask any follow up questions. Also avoid giving predeclarations like 'here is the answer from the context'."),
         ("system", "Query: {query}, Context: {context}"),
         ("system", "Your response should be in markdown format.")]

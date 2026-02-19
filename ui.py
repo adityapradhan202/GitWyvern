@@ -1,7 +1,6 @@
 import streamlit as st
 from utils import GeneralUtils
 from utils import GitUtils
-import time
 from rag_pipeline import RagBuilder
 from rag_pipeline import qa_rag
 

@@ -51,7 +51,7 @@ def describe_vulnerabilities(state:AgentState) -> AgentState:
     prompt_t = ChatPromptTemplate.from_messages(
         messages=[
             ("system", "You are tech secrity analysis"),
-            ("system", "Summarize this issue in five words(not more than that) in natural human language so that anyone can understand: {issue}"),
+            ("system", "Summarize this issue in 50 words(not more than that) in natural human language so that anyone can understand: {issue}"),
             ("system", "The output should be in plain text. Do not give predeclaration like 'here's the summary' or follow up questions!")
         ]
     )
