@@ -1,0 +1,31 @@
+📁 ./workdir\agents\agent_utils.py
+📋 The `agent_utils.py` file likely contains various utility functions for managing and processing agent-related files and directories. Functions such as `create_chunks`, `readme_exists`, `code_files`, `extract_func_names`, `project_structure`, and `collect_code_files` suggest its purpose in helping with the organization, extraction, and management of code files related to agents.
+
+📁 ./workdir\agents\funcname_analyzer.py
+📋 This file appears to contain Python functions for processing files, likely used within an agent system for automated data analysis tasks.
+
+📁 ./workdir\agents\readme_summarizer.py
+📋 This Python script appears to be a tool for checking and summarizing content within README files. It's likely used in the context of software development documentation.
+
+📁 ./workdir\agents\sast_llm.py
+📋 The SAST LLM is designed for file scanning to identify vulnerabilities and provide recommendations for solutions.
+
+📁 ./workdir\agents\security_utils.py
+📋 The file security_utils contains functions for scanning for security issues (bandit_scan), counting vulnerabilities (vulnerability_count and vulnerability_count_map), performing safety checks (safety_check) and managing a list of vulnerabilities (vulnerabilities).
+
+📁 ./workdir\gitwyvern.py
+📋 GitWyvern is a CLI tool for log analysis and security assessments. It uses the function `cli_log_fname` for command-line interface operations related to log filenames. The `analyze` function handles data processing and analysis tasks, while `security` is likely responsible for detecting and reporting potential security vulnerabilities or threats in analyzed logs.
+
+📁 ./workdir\tests\security_utils_test.py
+📋 Testing security utility functions in Python.
+
+📁 ./workdir\utils\general_utils.py
+📋 The function `initialize_workdir` suggests that this Python script likely provides utilities for managing or initializing working directories, which could be used across different scripts within the 'utils' directory.
+
+📁 ./workdir\utils\git_utils.py
+📋 Utility functions for Git repository operations.
+
+📁 ./workdir\wyvern_ascii.py
+📋 Wyvern ASCII representation using console-based graphics, likely for creating visualizations or animations.
+
+Git URL: https://github.com/adityapradhan202/GitWyvern.git

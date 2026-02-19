@@ -1,0 +1,10 @@
+from langchain_ollama import ChatOllama, OllamaEmbeddings
+
+# Model calls for native windows (Not for docker container)
+code_model = ChatOllama(model='qwen2.5-coder:3b', temperature=0.8)
+embed_model = OllamaEmbeddings(
+    model='unclemusclez/jina-embeddings-v2-base-code:latest'
+)
+
+# Model call for docker container linux os will be written here
+# (LATER)

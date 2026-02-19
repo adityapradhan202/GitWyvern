@@ -1,4 +1,4 @@
 venv/
 __pycache__/
 workdir/
-extracted_data/
+chroma_db/

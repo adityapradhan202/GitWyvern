@@ -1,0 +1,4 @@
+📁 ./workdir\main.py
+📋 This Python script appears to be a command-line interface for a music player application that handles various commands through different AI processes and listens for user input, including news updates, music playback, browsing, and routing to specific commands based on user input.
+
+Git URL: https://github.com/Githubcookiess/Jarvis-Voice-Assistant1.git

@@ -1,0 +1,22 @@
+
+By Severity:
+    1. Undefined: 0
+    2. Low: 0
+    3. Mid: 1
+    4. High 0
+
+By confidence:
+    1. Undefined: 0
+    2. Low: 1
+    3. Mid: 0
+    4. High 0
+
+
+
+------- Vulnerabilities + Recommendations --------
+
+❌ ./workdir\main.py
+📋 Requesting indefinitely can expose systems to significant security risks. 
+✅ Limit the number of attempts or sessions allowed before requiring authentication again.
+
+Git URL: https://github.com/Githubcookiess/Jarvis-Voice-Assistant1.git
