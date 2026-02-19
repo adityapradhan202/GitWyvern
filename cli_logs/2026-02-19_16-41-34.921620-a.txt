@@ -1,0 +1,19 @@
+📁 ./workdir\frontend\api_req.py
+📋 This Python file is likely for making API requests, with the `send_request` function handling this functionality.
+
+📁 ./workdir\notebooks\custom_eval\evaluate.py
+📋 This Python script, evaluate.py, appears to contain functions for initializing a class and comparing contexts. It's likely related to custom evaluation or testing logic within a Jupyter notebook environment.
+
+📁 ./workdir\notebooks\helpers\utils.py
+📋 This Python script deals with managing experiment logs and configurations. It initializes JSON files, logs experiments, deletes old logs, and customizes logging for different experiments.
+
+📁 ./workdir\rag_pipeline\main.py
+📋 Main script for RAG pipeline that tests API connection.
+
+📁 ./workdir\rag_pipeline\pipeline\data_ingestion\ingest.py
+📋 This Python script appears to be responsible for data ingestion and processing in a pipeline. The functions `clean_text` and `create_vector_database` suggest that it processes textual data and creates vector databases, respectively. This could imply a natural language processing (NLP) or machine learning project.
+
+📁 ./workdir\rag_pipeline\pipeline\rag_workflow.py
+📋 The files and functions suggest this is a Python pipeline module for building and routing knowledge-based responses using RAG (Retrieval-Augmented Generation) techniques.
+
+Git URL: https://github.com/adityapradhan202/BNS-LexAI.git

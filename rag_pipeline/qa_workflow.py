@@ -48,7 +48,7 @@ def use_rag(state:AgentState) -> AgentState:
         ("system", "You are also a helpful assistant who uses the provided context to find and generate an answer for user's query"),
         ("system", "Just give the answer and dont ask any follow up questions. Also avoid giving predeclarations like 'here is the answer from the context'."),
         ("system", "Query: {query}, Context: {context}"),
-        ("system", "Your response should be in markdown format. Use code snippet format for code!")]
+        ("system", "Your response should be in markdown format.")]
     )
     chain = answer_pt | code_model | StrOutputParser()
 

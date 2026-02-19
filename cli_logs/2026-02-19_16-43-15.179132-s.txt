@@ -1,0 +1,22 @@
+
+By Severity:
+    1. Undefined: 0
+    2. Low: 0
+    3. Mid: 1
+    4. High 0
+
+By confidence:
+    1. Undefined: 0
+    2. Low: 1
+    3. Mid: 0
+    4. High 0
+
+
+
+------- Vulnerabilities + Recommendations --------
+
+❌ ./workdir\frontend\api_req.py
+📋 Potential security risk exists with request timeouts; could result in hanging network connections. 
+✅ Implement a secure timeout mechanism for all API requests, ensuring it is adjustable and configurable to handle varying levels of latency. Monitor network health regularly to detect unusual behavior that might indicate hanging connections.
+
+Git URL: https://github.com/adityapradhan202/BNS-LexAI.git

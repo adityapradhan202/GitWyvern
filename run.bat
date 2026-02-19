@@ -26,6 +26,10 @@ IF EXIST %VENV_DIR% (
 )
 
 echo.
+echo Reseting vector database. Cleaning the old junk files!
+python reset_vecdb.py
+
+echo.
 echo Running ui.py
 streamlit run ui.py
 pause
