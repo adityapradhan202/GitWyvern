@@ -2,7 +2,6 @@
 <img src="./static/wyvern_transparent_logo.png" width="250">
 </p>
 
-
 <p align="center">
 <!-- <img alt="Static Badge" src="https://img.shields.io/badge/CLI-black?style=for-the-badge"> -->
 <img alt="Static Badge" src="https://img.shields.io/badge/cli-darkred?style=for-the-badge">
@@ -44,28 +43,22 @@
 5. **Docker Dekstop (Optional for windows, required for MacOS and Linux)**.
 
 ### Setup for Windows:
-<!-- <img src="https://cdn-icons-png.flaticon.com/128/888/888882.png" width="30"> -->
 
 **First, clone this repository**.
 
-**Make sure Python is installed on your system**. Then open File Explorer, navigate to the root directory of the project, and double-click on `run.bat`.
-
-Double-click this Windows batch file to launch the GitWyvern GUI application. If a virtual environment does not already exist, the script will automatically create one and install all the required dependencies inside it. The next time you run this batch file, it will activate the existing virtual environment and start the application at `http://localhost:8501`. The app will automatically open in your default web browser.
-
-To run the CLI version, double-click on `cli.bat`.
-
-<!-- <img src="https://cdn-icons-png.flaticon.com/128/15466/15466088.png" width="40"> -->
+* Make sure Python is installed on your system. Then open File Explorer, navigate to the root directory of the project, and double-click on `run.bat`.
+* Double-click this Windows batch file to launch the GitWyvern GUI. If a virtual environment doesn’t exist, it will be created automatically and the required dependencies will be installed. On subsequent runs, the existing environment will be activated and the app will start at http://localhost:8501 in your default browser.
+* To run the CLI version, double-click on `cli.bat`.
 
 ### Setup for docker:
 > ⚠️ In progress. Yet to be added once verified and tested!
 
 ### CLI-commands
-To activate and use the CLI go to the root level of the cloned repository and **double click** on `cli.bat` file.
+* To activate and use the CLI go to the root level of the cloned repository and **double click** on `cli.bat` file.
+* You can use `python gitwyvern.py --help` to get the list of commands. Use `python gitwyvern.py [command] --help` to see the command line arguments for the specific commands.
 
-You can use `python gitwyvern.py --help` to get the list of commands. Use `python gitwyvern.py [command] --help` to see the command line arguments for the specific commands.
+Click here to see the list of CLI commands - [CLI Commands](./docs/cli.md)
 
-Here's the list of commands you can use:  
-`python gitwyvern.py analyze [github_url]` - Analyzes code files.   
-`python gitwyvern.py security [github_url]` - Performs a hybrid security scan (SAST + LLM).  
-`python gitwyvern.py chat-wyvern [github_url]` - Creates and starts repo-aware chat system in the CLI itself.  
-`python gitwyvern.py clear-cli-logs [github_url]` - To clear the CLI logs.  
+### ⭐ Support the project:
+If you find GitWyvern useful, consider giving it a star — it truly helps and is greatly appreciated!  
+Made with 💖 by a developer fighting imposter syndrome.
