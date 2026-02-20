@@ -3,14 +3,10 @@
 </p>
 
 <p align="center">
-<!-- <img alt="Static Badge" src="https://img.shields.io/badge/CLI-black?style=for-the-badge"> -->
-<img alt="Static Badge" src="https://img.shields.io/badge/cli-darkred?style=for-the-badge">
-<img alt="Static Badge" src="https://img.shields.io/badge/RUns--locally-black?style=for-the-badge">
-<!-- <img alt="Static Badge" src="https://img.shields.io/badge/Release--v0.0.1-darkred?style=for-the-badge">-->
-<img alt="Static Badge" src="https://img.shields.io/badge/Release-v0.0.1-darkred?style=for-the-badge">
-<img alt="Static Badge" src="https://img.shields.io/badge/security-black?style=for-the-badge">
-<img alt="Static Badge" src="https://img.shields.io/badge/CHAT-darkred?style=for-the-badge">
-<img alt="Static Badge" src="https://img.shields.io/badge/code--analysis-black?style=for-the-badge">
+<img alt="Static Badge" src="https://img.shields.io/badge/Release-v0.0.1-blue?style=flat">
+<img alt="Static Badge" src="https://img.shields.io/badge/Runs-locally-black?style=flat">
+<img alt="Static Badge" src="https://img.shields.io/badge/windows-CLI--available-black?style=flat">
+<img alt="Static Badge" src="https://img.shields.io/badge/docker-macOs--%26--Linux-blue?style=flat">
 </p>
 
 <h1 align="center">GitWyvern: Scout Python Repos with AI</h1>
@@ -60,5 +56,5 @@
 Click here to see the list of CLI commands - [CLI Commands](./docs/cli.md)
 
 ### ⭐ Support the project:
-If you find GitWyvern useful, consider giving it a star — it truly helps and is greatly appreciated!  
-Made with 💖 by a developer fighting imposter syndrome.
+A star on the repository is greatly appreciated if you want to show some support.
+~ Made by a developer fighting imposter syndrome.
