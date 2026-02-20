@@ -35,9 +35,17 @@ with c2:
     st.image(image='static/wyvern_transparent_logo.png')
 
 with st.sidebar:
-    st.markdown('⚡ Made by -> [Aditya Pradhan](https://github.com/adityapradhan202)', text_alignment="center")
+    st.markdown('Made by -> [Aditya Pradhan](https://github.com/adityapradhan202)', text_alignment="center")
     st.markdown("#### :red[Options] ⚙️", text_alignment="center")
-    btn = st.button(label="Get app history", use_container_width=True)
+    btn = st.button(label="Clear app logs", use_container_width=True)
+    st.caption("Path for application logs - ./app_logs/logs.json", text_alignment="center")
+    # If sidebar button is pressed
+
+    st.markdown("#### :red[Show Support] ⭐", text_alignment="center")
+    st.markdown("To show support give a star on the github repository!", text_alignment="center")
+    
+if btn:
+    GeneralUtils.clear_app_logs()
 
 with st.form("form"):
     git_url = st.text_input(label="Enter githup url (HTTPS type only):", value=None, placeholder="For example: https://github.com/adityapradhan202/Rag-Badger.git")
@@ -48,6 +56,10 @@ with st.form("form"):
 if form_btn == True and git_url is None:
     st.warning("Enter GitHub URL!")
 elif form_btn == True and git_url is not None:
+    # Updating ./app_logs/logs.json
+    stamp = GeneralUtils.datetime_stamp()
+    GeneralUtils.app_log(datetime_stamp=stamp, log_type="GUI-app", giturl=git_url)
+
     with st.spinner("Wyvern is getting repo for you..."):
         GeneralUtils.initialize_workdir()
         git_url = git_url.strip()
@@ -157,4 +169,5 @@ if st.session_state.vec_db_initialized:
             res = qa_rag.invoke({'query':query})
             with st.container(border=True):
                 st.markdown(res['response'])
+
 

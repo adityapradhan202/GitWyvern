@@ -3,10 +3,10 @@
 </p>
 
 <p align="center">
+<img alt="Static Badge" src="https://img.shields.io/badge/Runs-locally-blue?style=flat">
 <img alt="Static Badge" src="https://img.shields.io/badge/Release-v0.0.1-blue?style=flat">
-<img alt="Static Badge" src="https://img.shields.io/badge/Runs-locally-black?style=flat">
-<img alt="Static Badge" src="https://img.shields.io/badge/windows-CLI--available-black?style=flat">
-<img alt="Static Badge" src="https://img.shields.io/badge/docker-macOs--%26--Linux-blue?style=flat">
+<img alt="Static Badge" src="https://img.shields.io/badge/CLI-available-blue?style=flat">
+<!-- <img alt="Static Badge" src="https://img.shields.io/badge/docker-macOs--%26--Linux-blue?style=flat"> -->
 </p>
 
 <h1 align="center">GitWyvern: Scout Python Repos with AI</h1>
@@ -40,7 +40,7 @@
 
 ### Setup for Windows:
 
-**First, clone this repository**.
+**Either, clone this repository** or download the windows version from **[Releases](https://github.com/adityapradhan202/GitWyvern/releases/)**.
 
 * Make sure Python is installed on your system. Then open File Explorer, navigate to the root directory of the project, and double-click on `run.bat`.
 * Double-click this Windows batch file to launch the GitWyvern GUI. If a virtual environment doesn’t exist, it will be created automatically and the required dependencies will be installed. On subsequent runs, the existing environment will be activated and the app will start at http://localhost:8501 in your default browser.
@@ -50,11 +50,12 @@
 > ⚠️ In progress. Yet to be added once verified and tested!
 
 ### CLI-commands
-* To activate and use the CLI go to the root level of the cloned repository and **double click** on `cli.bat` file.
+* To activate and use the CLI go to the root level of the cloned repository and **double click** on `cli.bat` file. (**This cli.bat file will only work on Windows OS**)
 * You can use `python gitwyvern.py --help` to get the list of commands. Use `python gitwyvern.py [command] --help` to see the command line arguments for the specific commands.
+* To use the CLI in macOS or Linux, first activate the venv of the project. And use python3 instead of python for the commands mentioned above.
 
 Click here to see the list of CLI commands - [CLI Commands](./docs/cli.md)
 
 ### ⭐ Support the project:
-A star on the repository is greatly appreciated if you want to show some support.
+A star on the repository is greatly appreciated if you want to show some support.  
 ~ Made by a developer fighting imposter syndrome.

@@ -1,0 +1,1 @@
+Application logs exist in this folder.

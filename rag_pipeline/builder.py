@@ -26,7 +26,11 @@ class RagBuilder:
 
         loader = DirectoryLoader(path=self.project_path, glob='**/*.py', loader_cls=PythonLoader)
         documents = loader.load()
-        python_splitter = RecursiveCharacterTextSplitter.from_language(language=Language.PYTHON, chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+        # python_splitter = RecursiveCharacterTextSplitter.from_language(language=Language.PYTHON, chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+        python_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=self.chunk_size,
+            chunk_overlap=self.chunk_overlap
+        )
         code_chunks = python_splitter.split_documents(documents)
 
         print("-> Initializing vector database creation")

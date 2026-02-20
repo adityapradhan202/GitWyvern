@@ -9,18 +9,14 @@ from rag_pipeline import qa_rag
 from rag_pipeline import RagBuilder
 
 from wyvern_ascii import wyvern_console_ascii
-from datetime import datetime
-
-
-def cli_log_fname() -> str:
-    """Returns string containing current date and time for the filename"""
-    return str(datetime.now()).replace(" ", "_").replace(":", "-")
+from reset_vecdb import reset_vecdb
 
 app = typer.Typer()
 
+
 @app.command()
 def clear_cli_logs():
-    """Clears the CLI logs directory"""
+    """CLI command to clear the CLI logs."""
 
     dirs = os.listdir('./cli_logs/')
     confirm = input("This will clear all the CLI logs. Enter Y to proceed, otherwise enter N: ")
@@ -37,38 +33,70 @@ def clear_cli_logs():
     else:
         print("Invalid input. Enter Y or N!")
 
+@app.command()
+def clear_app_logs():
+    """CLI command to clear the application logs"""
+
+    confirm = input("This will delete all the application logs. Enter Y to proceed, other enter N: ")
+    if confirm.lower() == "y":
+        GeneralUtils.clear_app_logs()
+    elif confirm.lower() == "n":
+        print("Process canceled!")
+    else:
+        print("Invalid input! Enter either Y or N!")
+
+
 # Chat-wyvern CLI
 @app.command()
 def chat_wyvern(giturl:str):
-    """Creates a RAG and opens a chat oop in the CLI"""
+    """CLI command to create a RAG and open a chat oop in the CLI"""
     
     GeneralUtils.initialize_workdir()
+    reset_vecdb()
     ack = GitUtils.clone_repo(giturl)
     if ack:
         builder = RagBuilder()
         builder.create_vector_store()
+        stamp = GeneralUtils.datetime_stamp()
+        path = os.path.join("./cli_logs", (stamp + "-cli-c" + ".txt"))
+        GeneralUtils.app_log(datetime_stamp=stamp, log_type="CLI-chat-wyvern", giturl=giturl)
 
         print()
         wyvern_console_ascii()
-        print("---------> Chat-wyvern <--------- (write /bye to exit the chat)")
+        print("---------> Chat-wyvern <--------- (write /bye to exit and save the chat)")
+        conversation = f"Git URL - {giturl}\n\n-----> Chat history <----\n\n\n"
+
         while True:
+
             prompt = input("prompt> ")
             if prompt.lower() == "/bye":
                 print("Exiting Chat-wyvern...")
                 break
+
+            conversation += f"❔ {prompt}\n"
             print("Generating... Please wait!")
             res = qa_rag.invoke({'query':prompt})
-            print("\n-------> Wyvern's Response <--------- (write /bye to exit the chat) \n")
+            print("\n-------> Wyvern's Response <--------- (write /bye to exit and save the chat) \n")
+            conversation += f"📋 {res['response']}\n\n"
             print(res['response'])
+
             print("\n\n")
+
+        # Save conversition
+        with open(path, "w", encoding="utf-8") as file:
+            file.write(conversation)
+        print(f"Succesfully saved the conversation history at {path}")
+
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
 
 
 @app.command()
 def analyze(giturl:str):
-    fname = cli_log_fname()
-    path = os.path.join("./cli_logs", fname + "-a" + ".txt")
+    """CLI command to invoke the analyzer agent."""
+
+    stamp = GeneralUtils.datetime_stamp()
+    path = os.path.join("./cli_logs", (stamp + "-cli-a" + ".txt"))
 
     GeneralUtils.initialize_workdir()
     ack = GitUtils.clone_repo(giturl)
@@ -94,6 +122,7 @@ def analyze(giturl:str):
 
         print("\n\n---> File analysis report\n\n"+report)
         print(f"Succesfully logged the file analysis report at {path}")
+        GeneralUtils.app_log(datetime_stamp=stamp, log_type="CLI-file-analysis", giturl=giturl)
     # If the repo is not clonned succesfully
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")
@@ -101,8 +130,10 @@ def analyze(giturl:str):
 
 @app.command()
 def security(giturl:str) -> None:
-    fname = cli_log_fname()
-    path = os.path.join("./cli_logs", fname + "-s" + ".txt")
+    """CLI command to invoke the sast_agent."""
+
+    stamp = GeneralUtils.datetime_stamp()
+    path = os.path.join("./cli_logs", (stamp + "-cli-s" + ".txt"))
 
     GeneralUtils.initialize_workdir()
     ack = GitUtils.clone_repo(giturl)
@@ -117,7 +148,7 @@ def security(giturl:str) -> None:
         if response["overally_safe"] == True:
             print("\n\nWyvern didn't find any vulnerabilities. The python scripts are safe to use.")
             with open(path, "w", encoding="utf-8") as file:
-                file.write("Wyvern didn't find any vulnerabilities. The python scripts are safe to use.")
+                file.write(f"Wyvern didn't find any vulnerabilities. The python scripts are safe to use.\n\nGit URL-{giturl}")
             print(f"Saving this information at {path}")
         else:
             report = ""
@@ -152,6 +183,8 @@ By confidence:
             print("\n\nWyvern found some vulnerabilities")
             print("\n---> Security scan report\n\n"+report)
             print(f"Succesfully saved the security report at {path}")
+        
+        GeneralUtils.app_log(datetime_stamp=stamp, log_type="CLI-security-scan", giturl=giturl)
     # If repo is not clonned
     else:
         print("Couldn't clone the repository! Check your internet connection and make sure the URL is correct!")

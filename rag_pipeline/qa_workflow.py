@@ -54,6 +54,7 @@ def use_rag(state:AgentState) -> AgentState:
 
     query = state['query']
     context = builder.retrieve_docs(query=query)
+    # print(f"\n\nRetrieved context:\n{context}\n\n") # This line is just for debugging
     response = chain.invoke({'query':query, 'context':context})
     state_upd = {'response':response}
 
