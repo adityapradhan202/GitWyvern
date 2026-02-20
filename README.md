@@ -16,8 +16,6 @@
 <b><a href='#requirements'>Requirements</a> • <a href='#setup-for-windows'>Windows-setup</a> • <a href='#setup-for-docker'>Docker-setup</a> • <a href='#cli-commands'>CLI-commands</a> • <a href="./docs/screenshots.md">App-screenshots</a> </b>
 </p>
 
-> ⚠️ **Official v0.0.1 is yet to be released after some tests.** 
-
 > **Disclaimer:** Also this tool is only for python based repositories. The repository you are trying to analyze must have majority of the code files as .py files.
 
 ![gui_img](./docs/images/ss_st_app.png)
