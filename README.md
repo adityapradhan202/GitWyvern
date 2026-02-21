@@ -4,7 +4,7 @@
 
 <p align="center">
 <img alt="Static Badge" src="https://img.shields.io/badge/Runs-locally-blue?style=flat">
-<img alt="Static Badge" src="https://img.shields.io/badge/Release-v0.0.1-blue?style=flat">
+<img alt="GitHub Release" src="https://img.shields.io/github/v/release/adityapradhan202/GitWyvern?color=blue">
 <img alt="Static Badge" src="https://img.shields.io/badge/CLI-available-blue?style=flat">
 <!-- <img alt="Static Badge" src="https://img.shields.io/badge/docker-macOs--%26--Linux-blue?style=flat"> -->
 </p>
