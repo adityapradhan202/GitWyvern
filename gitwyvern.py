@@ -49,7 +49,7 @@ def clear_app_logs():
 # Chat-wyvern CLI
 @app.command()
 def chat_wyvern(giturl:str):
-    """CLI command to create a RAG and open a chat oop in the CLI"""
+    """CLI command to create a RAG and open a chat loop in the CLI"""
     
     GeneralUtils.initialize_workdir()
     reset_vecdb()

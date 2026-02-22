@@ -54,6 +54,13 @@
 
 Click here to see the list of CLI commands - [CLI Commands](./docs/cli.md)
 
+**Logs directories:**  
+Check `./app_logs/logs.json` and `./cli_logs/` to get application and CLI logs.
+
+### Drawbacks and limitations:
+* The chunk size, retrieval technique and other configs for every RAG is fixed. Different codebase require different configuration based on some standard RAG evaluation metrics. The RAG fails 20-25 percent of the times. Also, the code specific LLm used in this project is not a strong one. It has only 3 billion parameters.
+* The SAST + LLM workflow can be slower when there are so many vulnerabilities in the repository. Because the LLM translates the bandit's console  output to natural language, and also recommends potential solutions.
+
 ### ⭐ Support the project:
 A star on the repository is greatly appreciated if you want to show some support.  
 ~ Made by a developer fighting imposter syndrome.
